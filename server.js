@@ -23,10 +23,14 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 //import routes and give the server access to them
-const routes = require('./controller/burgers_controller.js');
+const routes = require('./controllers/burgers_controller.js');
 
 app.use(routes);
 
-app.listen(PORT, function() {
-	console.log('App now listening on localhost: ' + PORT);
-});
+if (error) {
+	console.log(error);
+} else {
+	app.listen(PORT, function() {
+		console.log('App now listening on localhost: ' + PORT);
+	});
+}

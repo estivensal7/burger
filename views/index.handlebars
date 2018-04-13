@@ -1,38 +1,36 @@
-<h1>Burgers!</h1>
-
-<h2>Burgers Ready To Be Devoured</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devoured=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Burgers That Have Been Devoured</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block devoured=false}} 
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="bu">Burger Name:</label>
-    <input type="text" id="bu" name="name">
+<div class="page-intro">
+  <h1 class="title">Burger Eater</h1>
+  <p class="page-desc">Create your burger and DEVOUR it right after!!</p>
+  <br />
+  {{!-- <img class="burger-img" src="assets/img/burger.png"/> --}}
+</div>
+<div class="page-middle">
+  <div class="burgers-container">
+    <ul>
+      {{#each burgers}}
+        {{#unless devoured}}
+          {{> burgers/burger-block devoured=false}}
+        {{/unless}}
+      {{/each}}
+    </ul>
   </div>
-
-  <div class="form-group">
-    <label for="devoured">Is it Devoured?</label><br>
-    <input type="radio" name="devoured" value="1" checked> Devoured<br>
-    <input type="radio" name="devoured" value="0"> Not Devoured
+  <div class="devoured-container">
+    <ul>
+      {{#each burgers}}
+        {{#if devoured}}
+        <li>
+          <p class="devoured-name">{{id}}. {{burger_name}}</p>
+          <hr/>
+        </li>
+        {{/if}}
+      {{/each}}
+    </ul>
   </div>
-
-  <button type="submit">Add Burger</button>
-</form>
+</div>
+<div class="submit-form">
+  <form class="create-a-burger">
+    <input class="new-burger--text" name="newBurger" id="newBurger" placeholder="Enter a new burger here!" />
+    <br />
+    <button type="submit" name="submitBtn" id="submitBtn" class="submit-btn">Submit</button>
+  </form>
+</div>

@@ -1,7 +1,5 @@
 const express = require('express');
-
 const router = express.Router();
-
 //import the model to use its database functions
 const burger = require('../models/burger.js');
 
@@ -11,32 +9,23 @@ router.get('/', function(req, res) {
 		const hbsObject = {
 			burgers: data
 		};
-		console.log(hbsObject);
 		res.render('index', hbsObject);
 	});
 });
 
-router.post('/api/burgers', function(req, res) {
-	burger.create([
-		'burger_name', 'devoured'
-	], [
-		req.body.burger_name, req.body.devoured
-	], function(result) {
-		//send back the id of the new quote
-		res.json({ id: result.insertId });
+router.post('/api/burgers/new', function(req, res) {
+	const newBurger = req.body.burger_name;
+	burger.insert(newBurger, function(results) {
+		res.json(results)
 	});
 });
 
 router.put('/api/burgers/:id', function(req, res) {
-	const condition = 'id = ' + req.params.id;
+	const id = parseInt(req.params.id);
+	const state = parseInt(req.body.state);
 
-	console.log("condition", condition);
-
-	burger.update({
-		devoured: req.body.devoured
-	}, condition, function(result) {
-		if (result.changedRows === 0) {
-			//if no rows were changed, then the ID must not exist, so return 404 error
+	burger.update(state, id, function(results) {
+		if ( results.changedRows === 0 ) {
 			return res.status(404).end();
 		} else {
 			res.status(200).end();

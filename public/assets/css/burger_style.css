@@ -1,17 +1,12 @@
-/** {
-	position: relative;
-	box-sizing: border-box;
-}
-
 body {
-	background-color: #FFD27AFF;
+	background-color: #4894B6FF;
 }
 
 
 .title {
 	margin: 20px;
 	font-size: 100px;
-	font-family: "Shrikhand", "Helvetica", "Arial", "sans-serif", cursive;
+	font-family: "Helvetica", "Arial", "sans-serif";
 }
 
 .page-intro {
@@ -111,4 +106,4 @@ li {
 
 .submit-btn:hover {
 	background-color: green;
-}*/
+}

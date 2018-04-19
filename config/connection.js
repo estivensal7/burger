@@ -1,16 +1,12 @@
 // setting up MySQL connection
 const mysql = require('mysql');
 
-// making connection
-if (process.env.JAWSDB_URL) {
-	connection = mysql.createConnection(process.env.JAWSDB_URL);
-}
+	// making connection
 	const connection = mysql.createConnection({
-		port: 3306,
-		host: "localhost",
-		user: "root",
-		password: "root",
-		database: "burgers_db"
+		host: "gp96xszpzlqupw4k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+		user: "ks9s3cliek4qtsgm",
+		password: "j9enarqe8bys2l35",
+		database: "hw83ybln5x4qnm9i"
 	})
 
 //connect to database
